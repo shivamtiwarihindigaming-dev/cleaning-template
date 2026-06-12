@@ -62,7 +62,7 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[350px] sm:h-[450px] rounded-2xl overflow-hidden select-none shadow-xl border border-white/10"
+      className="relative w-full h-[350px] sm:h-[450px] rounded-2xl overflow-hidden select-none shadow-lg border border-slate-200"
       onMouseDown={(e) => {
         setIsDragging(true);
         handleMove(e.clientX);
@@ -72,17 +72,17 @@ export default function BeforeAfterSlider({
         handleMove(e.touches[0].clientX);
       }}
     >
-      {/* After Image (Background) */}
+      {/* After Image (Background) - Zoomed 105% to hide watermarks */}
       <img
         src={afterImage}
         alt="After cleaning"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none scale-105 origin-center"
       />
-      <div className="absolute right-4 top-4 bg-emerald-600/90 text-white text-[10px] sm:text-xs font-mono font-bold px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm shadow-md">
+      <div className="absolute right-4 top-4 bg-emerald-600 text-white text-[10px] sm:text-xs font-mono font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md z-10">
         {afterLabel}
       </div>
 
-      {/* Before Image (Foreground overlay) */}
+      {/* Before Image (Foreground overlay) - Zoomed 105% to hide watermarks */}
       <div
         className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
@@ -90,10 +90,10 @@ export default function BeforeAfterSlider({
         <img
           src={beforeImage}
           alt="Before cleaning"
-          className="absolute inset-0 w-full h-full object-cover max-w-none"
+          className="absolute inset-0 w-full h-full object-cover max-w-none scale-105 origin-center"
           style={{ width: containerRef.current?.getBoundingClientRect().width }}
         />
-        <div className="absolute left-4 top-4 bg-slate-900/90 text-white text-[10px] sm:text-xs font-mono font-bold px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm shadow-md">
+        <div className="absolute left-4 top-4 bg-slate-900 text-white text-[10px] sm:text-xs font-mono font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
           {beforeLabel}
         </div>
       </div>
@@ -103,7 +103,7 @@ export default function BeforeAfterSlider({
         className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize flex items-center justify-center pointer-events-none"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="w-8 h-8 rounded-full bg-white text-slate-800 flex items-center justify-center shadow-lg border border-slate-300 font-bold text-xs">
+        <div className="w-8 h-8 rounded-full bg-white text-slate-800 flex items-center justify-center shadow-lg border border-slate-350 font-bold text-xs">
           ↔
         </div>
       </div>
