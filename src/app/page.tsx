@@ -224,81 +224,129 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Standard Clean */}
-            <div className="bg-white border border-slate-200/80 shadow-md hover:shadow-lg rounded-2xl p-8 flex flex-col justify-between transition-all group hover:border-indigo-500/20">
+            <div className="bg-white border border-slate-200/80 shadow-md hover:shadow-lg rounded-2xl p-6 flex flex-col justify-between transition-all group hover:border-indigo-500/20">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 mb-6">
-                  <CheckCircle2 className="w-6 h-6" />
+                <img 
+                  src="/standard-plan.png" 
+                  alt="Standard Clean" 
+                  className="w-full h-44 object-cover rounded-xl mb-6 shadow-sm border border-slate-100" 
+                />
+                <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 mb-4">
+                  <CheckCircle2 className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition">Standard Home Clean</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-indigo-600 transition">Standard Home Clean</h3>
                 
                 {/* Price Display */}
-                <div className="flex items-baseline gap-1.5 mb-4">
-                  <span className="text-3xl font-extrabold text-slate-900">$129</span>
-                  <span className="text-slate-500 text-xs font-mono">starting at</span>
+                <div className="flex items-baseline gap-1.5 mb-3">
+                  <span className="text-2xl font-extrabold text-slate-900">$129</span>
+                  <span className="text-slate-500 text-[10px] font-mono">starting at</span>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
                   Perfect for regular upkeep. Includes dusting, vacuuming, mopping, bathroom detailing, kitchen counter wiping, and trash removal.
                 </p>
               </div>
-              <ul className="text-xs text-slate-500 space-y-2.5 pt-6 border-t border-slate-100">
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-indigo-600" /> Dust all accessible surfaces</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-indigo-600" /> Vacuum & mop hard floors</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-indigo-600" /> Clean toilet, shower & sink</li>
-              </ul>
+              <div>
+                <ul className="text-[11px] text-slate-500 space-y-2 pt-4 border-t border-slate-100">
+                  <li className="flex items-center gap-2"><Check className="w-3 h-3 text-indigo-600" /> Dust accessible surfaces</li>
+                  <li className="flex items-center gap-2"><Check className="w-3 h-3 text-indigo-600" /> Vacuum & mop hard floors</li>
+                  <li className="flex items-center gap-2"><Check className="w-3 h-3 text-indigo-600" /> Clean toilet, shower & sink</li>
+                </ul>
+                <button
+                  onClick={() => {
+                    setServiceType("standard");
+                    document.getElementById("book-now")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="mt-6 w-full py-2.5 text-xs font-semibold bg-indigo-50 border border-indigo-200 text-indigo-600 rounded-xl hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all flex items-center justify-center gap-1.5"
+                >
+                  Book Standard Clean
+                </button>
+              </div>
             </div>
 
             {/* Deep Clean */}
-            <div className="bg-white border border-indigo-500/30 shadow-lg shadow-indigo-600/5 rounded-2xl p-8 flex flex-col justify-between transition-all group relative hover:shadow-xl">
-              <div className="absolute top-4 right-4 bg-indigo-600 text-white text-[9px] font-mono px-2.5 py-0.5 rounded-full uppercase tracking-wider font-bold">
+            <div className="bg-white border border-indigo-500/30 shadow-lg shadow-indigo-600/5 rounded-2xl p-6 flex flex-col justify-between transition-all group relative hover:shadow-xl hover:border-indigo-500/50">
+              <div className="absolute top-4 right-4 bg-indigo-600 text-white text-[8px] font-mono px-2.5 py-0.5 rounded-full uppercase tracking-wider font-bold z-10">
                 Most Popular
               </div>
               <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 mb-6">
-                  <Sparkles className="w-6 h-6" />
+                <img 
+                  src="/deep-plan.png" 
+                  alt="Deep Clean" 
+                  className="w-full h-44 object-cover rounded-xl mb-6 shadow-sm border border-slate-100" 
+                />
+                <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 mb-4">
+                  <Sparkles className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition">Deep Sanitizing Clean</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-purple-600 transition">Deep Sanitizing Clean</h3>
                 
                 {/* Price Display */}
-                <div className="flex items-baseline gap-1.5 mb-4">
-                  <span className="text-3xl font-extrabold text-slate-900">$199</span>
-                  <span className="text-slate-500 text-xs font-mono">starting at</span>
+                <div className="flex items-baseline gap-1.5 mb-3">
+                  <span className="text-2xl font-extrabold text-slate-900">$199</span>
+                  <span className="text-slate-500 text-[10px] font-mono">starting at</span>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed mb-6">
-                  Highly recommended for first visits or homes that haven't been cleaned in 2+ months. Targets deep-seated grime, baseboards, and appliances.
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  Recommended for first visits or homes that haven't been cleaned in 2+ months. Targets deep-seated grime, baseboards, and appliances.
                 </p>
               </div>
-              <ul className="text-xs text-slate-500 space-y-2.5 pt-6 border-t border-slate-100">
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-600" /> Everything in Standard clean</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-600" /> Clean baseboards & window sills</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-purple-600" /> Oven & microwave interior</li>
-              </ul>
+              <div>
+                <ul className="text-[11px] text-slate-500 space-y-2 pt-4 border-t border-slate-100">
+                  <li className="flex items-center gap-2"><Check className="w-3 h-3 text-purple-600" /> Everything in Standard Clean</li>
+                  <li className="flex items-center gap-2"><Check className="w-3 h-3 text-purple-600" /> Clean baseboards & sills</li>
+                  <li className="flex items-center gap-2"><Check className="w-3 h-3 text-purple-600" /> Oven & microwave interior</li>
+                </ul>
+                <button
+                  onClick={() => {
+                    setServiceType("deep");
+                    document.getElementById("book-now")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="mt-6 w-full py-2.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md shadow-indigo-600/10 transition-all flex items-center justify-center gap-1.5"
+                >
+                  Book Deep Clean
+                </button>
+              </div>
             </div>
 
             {/* Move-In / Move-Out Clean */}
-            <div className="bg-white border border-slate-200/80 shadow-md hover:shadow-lg rounded-2xl p-8 flex flex-col justify-between transition-all group hover:border-teal-500/20">
+            <div className="bg-white border border-slate-200/80 shadow-md hover:shadow-lg rounded-2xl p-6 flex flex-col justify-between transition-all group hover:border-teal-500/20">
               <div>
-                <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 mb-6">
-                  <Clock className="w-6 h-6" />
+                <img 
+                  src="/move-plan.png" 
+                  alt="Move-In / Move-Out Clean" 
+                  className="w-full h-44 object-cover rounded-xl mb-6 shadow-sm border border-slate-100" 
+                />
+                <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 mb-4">
+                  <Clock className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-teal-600 transition">Move In / Move Out</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-teal-600 transition">Move In / Move Out</h3>
                 
                 {/* Price Display */}
-                <div className="flex items-baseline gap-1.5 mb-4">
-                  <span className="text-3xl font-extrabold text-slate-900">$279</span>
-                  <span className="text-slate-500 text-xs font-mono">starting at</span>
+                <div className="flex items-baseline gap-1.5 mb-3">
+                  <span className="text-2xl font-extrabold text-slate-900">$279</span>
+                  <span className="text-slate-500 text-[10px] font-mono">starting at</span>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
                   Moving houses? We clean top to bottom, including inside all empty cabinets, drawers, closets, and detail every corner to get your deposit back.
                 </p>
               </div>
-              <ul className="text-xs text-slate-500 space-y-2.5 pt-6 border-t border-slate-100">
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-teal-600" /> Complete empty room detailing</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-teal-600" /> Inside cabinets & drawers</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-teal-600" /> Deep detailing of appliances</li>
-              </ul>
+              <div>
+                <ul className="text-[11px] text-slate-500 space-y-2 pt-4 border-t border-slate-100">
+                  <li className="flex items-center gap-2"><Check className="w-3 h-3 text-teal-600" /> Complete empty room detailing</li>
+                  <li className="flex items-center gap-2"><Check className="w-3 h-3 text-teal-600" /> Inside cabinets & drawers</li>
+                  <li className="flex items-center gap-2"><Check className="w-3 h-3 text-teal-600" /> Deep detailing of appliances</li>
+                </ul>
+                <button
+                  onClick={() => {
+                    setServiceType("move");
+                    document.getElementById("book-now")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="mt-6 w-full py-2.5 text-xs font-semibold bg-teal-50 border border-teal-200 text-teal-600 rounded-xl hover:bg-teal-600 hover:text-white hover:border-teal-600 transition-all flex items-center justify-center gap-1.5"
+                >
+                  Book Move-Out Clean
+                </button>
+              </div>
             </div>
           </div>
         </section>
