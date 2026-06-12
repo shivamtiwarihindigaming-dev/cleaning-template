@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { 
   Sparkles, CheckCircle2, Calendar, DollarSign, Star, Menu, X, 
-  Clock, ShieldCheck, ThumbsUp, MapPin, Phone, Mail, Award, Check
+  Clock, ShieldCheck, ThumbsUp, MapPin, Phone, Mail, Award, Check, HelpCircle
 } from "lucide-react";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
@@ -11,6 +11,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Quote Calculator State
   const [bedrooms, setBedrooms] = useState(2);
@@ -83,7 +84,7 @@ export default function Home() {
             <a href="#services" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Services</a>
             <a href="#results" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Before & After</a>
             <a href="#pricing" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Pricing Estimator</a>
-            <a href="#why-us" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Why Us</a>
+            <a href="#faq" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition">FAQs</a>
             <a 
               href="#book-now" 
               className="px-5 py-2.5 text-sm font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-md shadow-indigo-600/15 transition-all"
@@ -128,11 +129,11 @@ export default function Home() {
               Pricing Estimator
             </a>
             <a 
-              href="#why-us" 
+              href="#faq" 
               onClick={() => setMobileMenuOpen(false)}
               className="block text-slate-600 hover:text-slate-900 py-2 text-base font-medium"
             >
-              Why Us
+              FAQs
             </a>
             <a 
               href="#book-now"
@@ -514,6 +515,37 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Service Areas Section */}
+        <section className="space-y-10 border-t border-slate-200 pt-16">
+          <div className="text-center max-w-xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-200 bg-indigo-50 text-indigo-700 w-fit">
+              <MapPin className="w-3.5 h-3.5" />
+              <span className="text-[10px] uppercase font-mono tracking-wider font-semibold">Service Coverage</span>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900">Our Service Areas</h2>
+            <p className="text-xs sm:text-sm text-slate-500">
+              We proudly serve the Greater Toronto Area (GTA) and surrounding regions.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {[
+              "Toronto", "North York", "Scarborough", "Etobicoke", 
+              "Mississauga", "Brampton", "Vaughan", "Richmond Hill", "Markham"
+            ].map((area, i) => (
+              <div 
+                key={i} 
+                className="bg-white border border-slate-200 rounded-xl p-4 flex items-center gap-3 shadow-sm hover:border-indigo-500/35 hover:shadow-md transition-all group"
+              >
+                <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors shrink-0">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <span className="text-xs sm:text-sm font-semibold text-slate-800">{area}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Why Choose Us & Trust Section */}
         <section id="why-us" className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-slate-200 pt-16">
           <div className="flex gap-4">
@@ -582,6 +614,134 @@ export default function Home() {
                 }`}
                 aria-label={`View testimonial ${i + 1}`}
               />
+            ))}
+          </div>
+        </section>
+
+        {/* Google Reviews Section */}
+        <section className="space-y-10 border-t border-slate-200 pt-16">
+          <div className="text-center max-w-xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-yellow-200 bg-yellow-50 text-yellow-700 w-fit">
+              <Star className="w-3.5 h-3.5 fill-current" />
+              <span className="text-[10px] uppercase font-mono tracking-wider font-semibold">Google Reviews</span>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900">What Our Clients Say on Google</h2>
+            <p className="text-xs sm:text-sm text-slate-500">
+              Real 5-star reviews from happy residential and commercial clients across the GTA.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                name: "David L.",
+                area: "Toronto",
+                text: "Highly recommend Prestige Cleaning! The deep clean they did on my kitchen was incredible. Very professional and detail-oriented."
+              },
+              {
+                name: "Sophia M.",
+                area: "North York",
+                text: "They are the most reliable cleaning service in GTA. The booking process was very easy and the pricing estimator is very accurate. Cleaners were punctual."
+              },
+              {
+                name: "Liam K.",
+                area: "Mississauga",
+                text: "Excellent move-out clean! They helped me get my full security deposit back. They even cleaned inside the oven and empty cabinets. Will use again."
+              }
+            ].map((rev, i) => (
+              <div key={i} className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-4 flex flex-col justify-between hover:shadow-md transition-all">
+                <div className="space-y-3">
+                  <div className="flex gap-0.5 text-amber-400">
+                    {[...Array(5)].map((_, starIdx) => (
+                      <Star key={starIdx} className="w-3.5 h-3.5 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed italic">
+                    "{rev.text}"
+                  </p>
+                </div>
+                <div className="border-t border-slate-100 pt-3 mt-4 flex items-center justify-between text-[11px] text-slate-500 font-mono">
+                  <span className="font-bold text-slate-800">{rev.name}</span>
+                  <span>{rev.area}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center pt-2">
+            <a 
+              href="https://google.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center gap-2 px-6 py-3 text-xs font-semibold bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl shadow-sm transition-all hover:scale-105"
+            >
+              <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
+              <span>See All Reviews on Google</span>
+            </a>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="space-y-10 border-t border-slate-200 pt-16">
+          <div className="text-center max-w-xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-200 bg-indigo-50 text-indigo-700 w-fit">
+              <HelpCircle className="w-3.5 h-3.5" />
+              <span className="text-[10px] uppercase font-mono tracking-wider font-semibold">Help Center</span>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900">Frequently Asked Questions</h2>
+            <p className="text-xs sm:text-sm text-slate-500">
+              Got questions? We've got answers. If you can't find what you are looking for, contact us!
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {[
+              {
+                q: "How long does a cleaning take?",
+                a: "It depends on the size of your home and the package selected. A standard clean for a 2-bedroom home typically takes 2 to 3 hours, while a deep clean or move-out clean can take 4 to 6 hours depending on the condition of the home."
+              },
+              {
+                q: "Do you bring your own supplies?",
+                a: "Yes, our professional cleaners bring all the necessary eco-friendly cleaning products and state-of-the-art equipment (like vacuum cleaners and microfiber cloths) required for the job. You don't need to provide anything."
+              },
+              {
+                q: "What if I'm not satisfied?",
+                a: "Your satisfaction is our top priority. If you aren't completely happy with any area we cleaned, notify us within 24 hours and we will send a team back to re-clean the area for free."
+              },
+              {
+                q: "How do I cancel or reschedule?",
+                a: "You can easily cancel or reschedule your cleaning by calling or emailing us. We ask for a 24-hour notice to cancel or reschedule for free."
+              },
+              {
+                q: "Are your cleaners background checked?",
+                a: "Absolutely. All of our cleaners are 100% vetted, undergo rigorous background checks, and receive comprehensive in-person training to ensure safety and quality."
+              },
+              {
+                q: "Do I need to be home during cleaning?",
+                a: "No, you do not need to be home. Many of our clients provide lockbox codes or leave keys. If you prefer to be home during the cleaning, that is completely fine too!"
+              }
+            ].map((faq, i) => (
+              <div key={i} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm transition-all">
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full px-6 py-4 flex items-center justify-between text-left font-bold text-slate-900 hover:bg-slate-50 transition-colors"
+                >
+                  <span className="text-sm">{faq.q}</span>
+                  <span className="text-indigo-600 font-mono text-lg shrink-0 ml-4">
+                    {openFaq === i ? "−" : "+"}
+                  </span>
+                </button>
+                {openFaq === i && (
+                  <div className="px-6 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3 bg-slate-50/50">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </section>
@@ -757,6 +917,19 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/16475550199"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 font-bold text-xs sm:text-sm transition-all hover:scale-105 active:scale-95 shadow-emerald-500/25"
+      >
+        <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.013-5.11-2.861-6.961S14.304 1.24 11.669 1.24c-5.439 0-9.867 4.42-9.871 9.858 0 1.902.486 3.758 1.412 5.376L2.125 20.25l3.906-.99-.384.62zm10.74-5.263c-.324-.162-1.92-.949-2.213-1.055-.293-.106-.507-.16-.721.162-.213.324-.827 1.055-1.013 1.268-.187.213-.373.24-.697.078-.324-.162-1.37-.505-2.61-1.613-.964-.86-1.614-1.923-1.804-2.247-.187-.324-.02-.5-.182-.662-.146-.145-.324-.378-.487-.567-.162-.189-.216-.324-.324-.541-.109-.217-.055-.405-.028-.567.027-.162.216-.514.324-.676.106-.162.146-.27.216-.405.071-.135.035-.253-.014-.405-.049-.153-.487-1.176-.667-1.609-.176-.425-.37-.367-.507-.367-.13-.003-.28-.003-.43-.003-.15 0-.393.056-.599.28-.206.224-.786.77-.786 1.88s.81 2.18 1.92 2.33c.11.015 2.133 3.258 5.167 4.567.722.311 1.282.497 1.722.637.725.23 1.385.197 1.907.12.581-.086 1.92-.786 2.19-1.505.27-.718.27-1.334.19-1.46-.082-.125-.296-.205-.62-.367z" />
+        </svg>
+        <span>Chat with us</span>
+      </a>
     </div>
   );
 }
